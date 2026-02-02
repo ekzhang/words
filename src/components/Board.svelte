@@ -7,6 +7,11 @@
     isOrthogonalAdjacent,
     type BoardCell,
   } from "../lib/board";
+  import {
+    playLetterSelectSound,
+    playWordFoundSound,
+    playInvalidWordSound,
+  } from "../lib/sounds";
 
   interface Props {
     board: BoardCell[][];
@@ -47,12 +52,14 @@
       const prevCell = selectedPath[selectedPath.length - 2];
       if (prevCell.row === cell.row && prevCell.col === cell.col) {
         selectedPath = selectedPath.slice(0, -1);
+        playLetterSelectSound(selectedPath.length);
         return;
       }
     }
 
     if (canSelect(cell)) {
       selectedPath = [...selectedPath, cell];
+      playLetterSelectSound(selectedPath.length);
     }
   }
 
@@ -61,15 +68,19 @@
     e.preventDefault();
     isDragging = true;
     selectedPath = [cell];
+    playLetterSelectSound(1);
   }
 
   function handleEnd() {
     if (!isDragging) return;
     isDragging = false;
 
-    if (isValid) {
+    if (isValid && !isAlreadyFound) {
       const score = getWordScore(currentWord.length);
       onWordFound(currentWord, score);
+      playWordFoundSound(currentWord.length);
+    } else if (currentWord.length >= 3 && !isValid) {
+      playInvalidWordSound();
     }
 
     selectedPath = [];

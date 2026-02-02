@@ -24,6 +24,7 @@ A fast-paced word puzzle game where you drag across letters to form words. Chall
 - **Shareable Links** - Challenge friends with the exact same board
 - **Mobile Friendly** - Works great on touch devices
 - **Real-time Validation** - Tiles glow green when you have a valid word
+- **Sound Effects** - Audio feedback for letter selection, valid words, and background music during gameplay
 
 ## Development
 
@@ -46,3 +47,7 @@ npm run preview
 - [Svelte 5](https://svelte.dev/) - UI framework
 - [Vite](https://vitejs.dev/) - Build tool
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
+
+## Credits
+
+- Background music: ["Sky Puzzle"](https://soundimage.org/puzzle-music-3/) by Eric Matyas at [soundimage.org](https://soundimage.org)

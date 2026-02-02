@@ -5,6 +5,7 @@
   import { SHAPES } from "../lib/shapes";
   import { ensureDictionaryLoaded } from "../lib/dictionary";
   import { route } from "../router";
+  import { startBackgroundMusic, stopBackgroundMusic } from "../lib/sounds";
 
   const encodedConfig = $derived(route.params.encodedConfig ?? "");
 
@@ -39,6 +40,7 @@
     score = 0;
     foundWords = [];
     timeLeft = config.timeLimit;
+    startBackgroundMusic();
 
     if (config.timeLimit > 0) {
       timerInterval = setInterval(() => {
@@ -53,6 +55,7 @@
 
   function endGame() {
     gameEnded = true;
+    stopBackgroundMusic();
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
@@ -82,6 +85,7 @@
   $effect(() => {
     return () => {
       if (timerInterval) clearInterval(timerInterval);
+      stopBackgroundMusic();
     };
   });
 </script>
@@ -202,13 +206,13 @@
   {:else}
     <div class="max-w-lg mx-auto">
       <div class="flex justify-between items-center mb-6">
-        <div class="text-center">
+        <div class="text-center flex-1">
           <p class="text-emerald-300 text-xs uppercase tracking-wide">Score</p>
           <p class="text-2xl font-bold">{score.toLocaleString()}</p>
         </div>
 
         {#if config.timeLimit > 0}
-          <div class="text-center">
+          <div class="text-center flex-1">
             <p class="text-emerald-300 text-xs uppercase tracking-wide">Time</p>
             <p
               class="text-2xl font-bold font-mono {timeLeft <= 10
@@ -220,7 +224,7 @@
           </div>
         {/if}
 
-        <div class="text-center">
+        <div class="text-center flex-1">
           <p class="text-emerald-300 text-xs uppercase tracking-wide">Words</p>
           <p class="text-2xl font-bold">{foundWords.length}</p>
         </div>
