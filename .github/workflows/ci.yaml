@@ -60,6 +60,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          BASE_PATH: /words/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
