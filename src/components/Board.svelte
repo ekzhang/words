@@ -148,7 +148,7 @@
       if (
         exactCell.row === prevCell.row &&
         exactCell.col === prevCell.col &&
-        (isDiagonalAdjacent(lastCell, exactCell) || distToCenter < 50)
+        (isDiagonalAdjacent(lastCell, exactCell) || distToCenter < 40)
       ) {
         handleCellSelect(exactCell);
         return;
@@ -163,7 +163,7 @@
       // For horizontal/vertical moves: require being somewhat close to center
       // This prevents corner clips from triggering
       const distToCenter = getDistanceToCenter(exactCell, clientX, clientY);
-      if (distToCenter < 50) {
+      if (distToCenter < 40) {
         handleCellSelect(exactCell);
       }
     } else {
