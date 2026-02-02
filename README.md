@@ -1,4 +1,6 @@
-# Word Hunt
+# Word Hunt (SPA)
+
+_**[Play online here.](https://www.ekzhang.com/words)** This was mostly vibe coded in an afternoon._
 
 A fast-paced word puzzle game where you drag across letters to form words. Challenge your friends with shareable game links!
 
