@@ -280,7 +280,7 @@
   .tile {
     min-width: 60px;
     min-height: 60px;
-    border: 2px solid rgba(180, 140, 100, 0.3);
+    border: 3px solid rgba(180, 140, 100, 0.3);
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
