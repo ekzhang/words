@@ -229,7 +229,7 @@
         {#if cell.active}
           <button
             data-cell="{cell.row}-{cell.col}"
-            class="tile aspect-square flex items-center justify-center text-4xl sm:text-5xl font-bold rounded-lg transition-all duration-150 select-none
+            class="tile aspect-square flex items-center justify-center text-5xl font-bold rounded-lg transition-all duration-150 select-none
               {isSelected(cell)
               ? isValid
                 ? isAlreadyFound
@@ -241,7 +241,7 @@
             ontouchstart={(e) => handleStart(cell, e)}
             {disabled}
           >
-            {cell.letter}
+            <span class="text-[60cqw]">{cell.letter}</span>
           </button>
         {:else}
           <div class="aspect-square"></div>
@@ -285,6 +285,7 @@
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
+    container-type: size;
   }
 
   .tile:hover:not(:disabled) {
