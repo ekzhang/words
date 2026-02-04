@@ -3,4 +3,4 @@
   import "./router";
 </script>
 
-<Router base={import.meta.env.BASE_URL.replace(/^\/|\/$/g, "")} />
+<Router base="#" />
